@@ -7,6 +7,7 @@ class Pages extends BaseController
     public function index()
     {
         $data = [
+            'user_name' => 'Admin Utama',
             'title' => 'Dashboard',
             'desc' => 'Tabel Hasil Pemeriksaan Lab PA',
             'data_hasil' => [
@@ -114,8 +115,62 @@ class Pages extends BaseController
         return view('pages/dashboard', $data);
     }
 
+    public function user()
+    {
+        $data = [
+            'user_name' => 'RSI Gondanglegi',
+            'title' => 'Dashboard',
+            'desc' => 'Tabel Hasil Pemeriksaan Lab PA',
+            'data_hasil' => [
+                [
+                    'no_lab' => '2022051600001',
+                    'tgl_terima' => '2022-05-08',
+                    'tgl_selesai' => '2022-05-16',
+                    'pasien' => 'Rayandra',
+                    'rs' => 'RSI gondanglegi',
+                    'diagnosis' => 'suspect A',
+                    'pemeriksaan' => 'NEGATIF'
+                ],
+                [
+                    'no_lab' => '2022051600002',
+                    'tgl_terima' => '2022-05-09',
+                    'tgl_selesai' => '2022-05-16',
+                    'pasien' => 'Yala',
+                    'rs' => 'RSI gondanglegi',
+                    'diagnosis' => 'suspect B',
+                    'pemeriksaan' => 'NEGATIF'
+                ],
+                [
+                    'no_lab' => '2022051600003',
+                    'tgl_terima' => '2022-05-10',
+                    'tgl_selesai' => '2022-05-16',
+                    'pasien' => 'Pratama',
+                    'rs' => 'RSI gondanglegi',
+                    'diagnosis' => 'suspect C',
+                    'pemeriksaan' => 'NEGATIF'
+                ]
+            ]
+        ];
+        return view('pages/dashboard', $data);
+    }
+
     public function hasil()
     {
         return view('pages/hasil');
+    }
+
+    public function login()
+    {
+        return view('pages/login');
+    }
+
+    public function register()
+    {
+        return view('pages/register');
+    }
+
+    public function settings()
+    {
+        return view('pages/settings');
     }
 }

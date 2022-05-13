@@ -7,9 +7,9 @@
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
+    <!-- <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Tabel</h6>
-    </div>
+    </div> -->
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -55,7 +55,7 @@
                                     <i class="fas fa-trash"></i>
                                 </a>
                                 <a href="#" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-edit"></i>
                                 </a>
                             </td>
                         </tr>
