@@ -115,12 +115,13 @@ class Pages extends BaseController
         return view('pages/dashboard', $data);
     }
 
-    public function user()
+    public function userlab()
     {
         $data = [
             'user_name' => 'RSI Gondanglegi',
             'title' => 'Dashboard',
             'desc' => 'Tabel Hasil Pemeriksaan Lab PA',
+            'type' => 'input',
             'data_hasil' => [
                 [
                     'no_lab' => '2022051600001',
@@ -156,7 +157,12 @@ class Pages extends BaseController
 
     public function hasil()
     {
-        return view('pages/hasil');
+        $data = [
+            'user_name' => 'Admin Utama',
+            'title' => 'Input Hasil Lab PA',
+            'desc' => 'Input Hasil Pemeriksaan Lab PA'
+        ];
+        return view('pages/hasil', $data);
     }
 
     public function login()
@@ -172,5 +178,30 @@ class Pages extends BaseController
     public function settings()
     {
         return view('pages/settings');
+    }
+
+    public function edithasil()
+    {
+        $data = [
+            'user_name' => 'Admin Utama',
+            'title' => 'Edit Hasil Lab PA',
+            'desc' => 'Edit Hasil Pemeriksaan Lab PA',
+            'type' => 'edit',
+            'data_hasil' => [
+                [
+                    'no_lab' => '2022051600001',
+                    'tgl_terima' => '2022-05-08',
+                    'tgl_selesai' => '2022-05-16',
+                    'namapasien' => 'Rayandra',
+                    'umurpasien' => '30',
+                    'jeniskelamin' => 'Laki-Laki',
+                    'namadokter' => 'dr. Budi Prakoso, Sp. PD',
+                    'rs' => 'RSI gondanglegi',
+                    'diagnosis' => 'suspect A',
+                    'pemeriksaan' => 'NEGATIF'
+                ]
+            ]
+        ];
+        return view('pages/hasil', $data);
     }
 }

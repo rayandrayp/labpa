@@ -11,50 +11,50 @@
         <h6 class="m-0 font-weight-bold text-primary">Tabel</h6>
     </div> -->
     <div class="card-body">
+
+        <a href="/user/add" data-toggle="tooltip" title="Add User" class="btn btn-success btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Add User</span>
+        </a>
+        <br>
+        <br>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>No. Lab</th>
-                        <th>Tanggal Terima</th>
-                        <th>Tanggal Selesai</th>
-                        <th>Nama Pasien</th>
-                        <th>Asal RS/Klinik</th>
-                        <th>Diagnosis</th>
-                        <th>Pemeriksaan</th>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Nama Lengkap</th>
+                        <th>RS/Klinik Asal</th>
+                        <th>Kota</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>No. Lab</th>
-                        <th>Tanggal Terima</th>
-                        <th>Tanggal Selesai</th>
-                        <th>Nama Pasien</th>
-                        <th>Asal RS/Klinik</th>
-                        <th>Diagnosis</th>
-                        <th>Pemeriksaan</th>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Nama Lengkap</th>
+                        <th>RS/Klinik Asal</th>
+                        <th>Kota</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     <?php foreach ($data_hasil as $a) : ?>
                         <tr>
-                            <td><?= $a['no_lab']; ?></td>
-                            <td><?= $a['tgl_terima']; ?></td>
-                            <td><?= $a['tgl_selesai']; ?></td>
-                            <td><?= $a['pasien']; ?></td>
-                            <td><?= $a['rs']; ?></td>
-                            <td><?= $a['diagnosis']; ?></td>
-                            <td><?= $a['pemeriksaan']; ?></td>
+                            <td><?= $a['id']; ?></td>
+                            <td><?= $a['username']; ?></td>
+                            <td><?= $a['nama']; ?></td>
+                            <td><?= $a['asal']; ?></td>
+                            <td><?= $a['kota']; ?></td>
                             <td>
-                                <a href="#" data-toggle="tooltip" title="Cetak" class="btn btn-primary btn-circle btn-sm">
-                                    <i class="fas fa-print"></i>
-                                </a>
                                 <a href="/delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </a>
-                                <a href="/edithasil" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                <a href="/user/edit" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </td>
