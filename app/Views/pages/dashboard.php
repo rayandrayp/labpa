@@ -48,14 +48,14 @@
                             <td><?= $a['diagnosis']; ?></td>
                             <td><?= $a['pemeriksaan']; ?></td>
                             <td>
-                                <a href="#" class="btn btn-primary btn-circle btn-sm">
+                                <a href="#" data-toggle="tooltip" title="Cetak" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-print"></i>
                                 </a>
-                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                <a href="#" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </a>
-                                <a href="#" class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-pencil"></i>
+                                <a href="#" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                    <i class="fas fa-pencil-alt"></i>
                                 </a>
                             </td>
                         </tr>
@@ -65,5 +65,9 @@
         </div>
     </div>
 </div>
-
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 <?= $this->endSection(); ?>
