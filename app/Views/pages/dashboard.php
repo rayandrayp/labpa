@@ -21,8 +21,7 @@
                         <th>Nama Pasien</th>
                         <th>Asal RS/Klinik</th>
                         <th>Diagnosis</th>
-                        <th>Pemeriksaan</th>
-                        <th>Action</th>
+                        <th>Hasil</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -33,8 +32,7 @@
                         <th>Nama Pasien</th>
                         <th>Asal RS/Klinik</th>
                         <th>Diagnosis</th>
-                        <th>Pemeriksaan</th>
-                        <th>Action</th>
+                        <th>Hasil</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -46,17 +44,18 @@
                             <td><?= $a['pasien']; ?></td>
                             <td><?= $a['rs']; ?></td>
                             <td><?= $a['diagnosis']; ?></td>
-                            <td><?= $a['pemeriksaan']; ?></td>
                             <td>
                                 <a href="#" data-toggle="tooltip" title="Cetak" class="btn btn-primary btn-circle btn-sm">
                                     <i class="fas fa-print"></i>
                                 </a>
-                                <a href="/delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <a href="/edithasil" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                                <?php if ($user_name == 'Admin Utama') { ?>
+                                    <a href="/delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                    <a href="/edithasil" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

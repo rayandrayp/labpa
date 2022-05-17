@@ -1,4 +1,22 @@
 <?= $this->include('layout/header'); ?>
+<?php
+$username = [
+    'name' => 'username',
+    'id' => 'username',
+    'value' => null,
+    'class' => 'form-control'
+];
+
+$password = [
+    'name' => 'password',
+    'id' => 'password',
+    'class' => 'form-control'
+];
+
+$session = session();
+$errors = $session->getFlashdata('errors');
+
+?>
 
 <body class="bg-gradient-primary">
 
@@ -16,7 +34,19 @@
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
-
+                                    <?php if ($errors != null) : ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <h4 class="alert-heading">Terjadi Kesalahan</h4>
+                                            <hr>
+                                            <p class="mb-0">
+                                                <?php
+                                                foreach ($errors as $err) {
+                                                    echo $err . '<br>';
+                                                }
+                                                ?>
+                                            </p>
+                                        </div>
+                                    <?php endif ?>
                                     <br>
                                     <br>
                                     <br>

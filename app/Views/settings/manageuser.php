@@ -51,7 +51,7 @@
                             <td><?= $a['asal']; ?></td>
                             <td><?= $a['kota']; ?></td>
                             <td>
-                                <a href="/delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
+                                <a href="/user/delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
                                     <i class="fas fa-trash"></i>
                                 </a>
                                 <a href="/user/edit" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">

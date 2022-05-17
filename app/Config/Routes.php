@@ -41,6 +41,9 @@ $routes->get('/edithasil', 'Pages::edithasil');
 $routes->get('/user/manage', 'User::index');
 $routes->get('/user/add', 'User::adduser');
 $routes->get('/user/edit', 'User::edituser');
+$routes->get('/rs', 'RumahSakit::index');
+$routes->get('/rs/add', 'RumahSakit::addrs');
+$routes->get('/rs/edit', 'RumahSakit::editrs');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

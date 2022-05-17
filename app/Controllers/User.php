@@ -61,7 +61,7 @@ class User extends BaseController
                 ]
             ]
         ];
-        return view('pages/manageuser', $data);
+        return view('settings/manageuser', $data);
     }
 
     public function adduser()
@@ -72,7 +72,7 @@ class User extends BaseController
             'desc' => 'Tabel berisi daftar User',
             'type' => 'input'
         ];
-        return view('pages/adduser', $data);
+        return view('settings/adduser', $data);
     }
 
     public function edituser()
@@ -93,6 +93,6 @@ class User extends BaseController
                 ]
             ]
         ];
-        return view('pages/adduser', $data);
+        return view('settings/adduser', $data);
     }
 }

@@ -37,12 +37,6 @@
                         <input type="text" class="form-control form-control-user" id="exampleLastName" value="<?php if ($type == 'edit') { ?> <?= $data_hasil[0]['kota']; ?> <?php } ?>">
                     </div>
                 </div>
-                <div class=" form-group row">
-                    <label for="formhasil" class="col-sm-1 col-form-label">Alamat</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control form-control-user" id="exampleLastName"></textarea>
-                    </div>
-                </div>
                 <a href="/user/manage" class="btn btn-primary btn-user btn-block">
                     Submit
                 </a>

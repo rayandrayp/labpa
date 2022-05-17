@@ -21,18 +21,17 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Hasil Lab PA
-    </div>
-    <li class="nav-item">
-        <a class="nav-link" href="hasil">
-            <i class="fas fa-fw fa-pencil-alt"></i>
-            <span>Input Hasil Lab PA</span>
-        </a>
-    </li>
     <?php if ($user_name == 'Admin Utama') { ?>
-
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Hasil Lab PA
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" href="/hasil">
+                <i class="fas fa-fw fa-pencil-alt"></i>
+                <span>Input Hasil Lab PA</span>
+            </a>
+        </li>
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -54,7 +53,7 @@
                     <a class="collapse-item" href="/user/manage">Manage</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Others:</h6>
-                    <a class="collapse-item" href="/managers">Daftar RS/Klinik</a>
+                    <a class="collapse-item" href="/rs">Daftar RS/Klinik</a>
                 </div>
             </div>
         </li>
