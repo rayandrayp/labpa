@@ -51,6 +51,32 @@ class Database extends Config
     ];
 
     /**
+     * The development database connection.
+     *
+     * @var array
+     */
+    public $development = [
+        'DSN'      => '',
+        'hostname' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'labpa',
+        'DBDriver' => 'MySQLi',
+        'DBPrefix' => '',
+        'pConnect' => false,
+        'DBDebug'  => (ENVIRONMENT !== 'production'),
+        'charset'  => 'utf8',
+        'DBCollat' => 'utf8_general_ci',
+        'swapPre'  => '',
+        'encrypt'  => false,
+        'compress' => false,
+        'strictOn' => false,
+        'failover' => [],
+        'port'     => 3306,
+    ];
+
+
+    /**
      * This database connection is used when
      * running PHPUnit database tests.
      *
@@ -58,12 +84,61 @@ class Database extends Config
      */
     public $tests = [
         'DSN'      => '',
-        'hostname' => '127.0.0.1',
-        'username' => '',
+        'hostname' => 'localhost',
+        'username' => 'root',
         'password' => '',
-        'database' => ':memory:',
-        'DBDriver' => 'SQLite3',
-        'DBPrefix' => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
+        'database' => 'labpa',
+        'DBDriver' => 'MySQLi',
+        'DBPrefix' => '',
+        'pConnect' => false,
+        'DBDebug'  => (ENVIRONMENT !== 'production'),
+        'charset'  => 'utf8',
+        'DBCollat' => 'utf8_general_ci',
+        'swapPre'  => '',
+        'encrypt'  => false,
+        'compress' => false,
+        'strictOn' => false,
+        'failover' => [],
+        'port'     => 3306,
+    ];
+    // public $tests = [
+    //     'DSN'      => '',
+    //     'hostname' => '127.0.0.1',
+    //     'username' => '',
+    //     'password' => '',
+    //     'database' => ':memory:',
+    //     'DBDriver' => 'SQLite3',
+    //     'DBPrefix' => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
+    //     'pConnect' => false,
+    //     'DBDebug'  => (ENVIRONMENT !== 'production'),
+    //     'charset'  => 'utf8',
+    //     'DBCollat' => 'utf8_general_ci',
+    //     'swapPre'  => '',
+    //     'encrypt'  => false,
+    //     'compress' => false,
+    //     'strictOn' => false,
+    //     'failover' => [],
+    //     'port'     => 3306,
+    // ];
+
+    /**
+     * The Production database connection.
+     *
+     * @var array
+     */
+    // define('DBHOST', '10.10.10.2');
+    // define('DBPORT', '3306');
+    // define('DBUSER', 'itrst');
+    // define('DBPASS', 'ITrst321');
+    // define('DBNAME', 'sik');
+    public $production = [
+        'DSN'      => '',
+        'hostname' => '10.10.10.2',
+        'username' => 'itrst',
+        'password' => 'ITrst321',
+        'database' => 'sik',
+        'DBDriver' => 'MySQLi',
+        'DBPrefix' => '',
         'pConnect' => false,
         'DBDebug'  => (ENVIRONMENT !== 'production'),
         'charset'  => 'utf8',
@@ -85,6 +160,8 @@ class Database extends Config
         // we don't overwrite live data on accident.
         if (ENVIRONMENT === 'testing') {
             $this->defaultGroup = 'tests';
+        } else {
+            $this->defaultGroup = ENVIRONMENT;
         }
     }
 }

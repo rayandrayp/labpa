@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="<?= base_url(); ?>/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -27,7 +27,7 @@
             Hasil Lab PA
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="/hasil">
+            <a class="nav-link" href="<?= base_url(); ?>/hasil">
                 <i class="fas fa-fw fa-pencil-alt"></i>
                 <span>Input Hasil Lab PA</span>
             </a>
@@ -49,11 +49,11 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
-                    <a class="collapse-item" href="/user/add">Add</a>
-                    <a class="collapse-item" href="/user/manage">Manage</a>
+                    <a class="collapse-item" href="<?= base_url(); ?>/user/add">Add</a>
+                    <a class="collapse-item" href="<?= base_url(); ?>/user/manage">Manage</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Others:</h6>
-                    <a class="collapse-item" href="/rs">Daftar RS/Klinik</a>
+                    <a class="collapse-item" href="<?= base_url(); ?>/rs">Daftar RS/Klinik</a>
                 </div>
             </div>
         </li>
