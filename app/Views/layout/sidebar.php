@@ -53,7 +53,7 @@
                     <a class="collapse-item" href="<?= base_url(); ?>/user/manage">Manage</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Others:</h6>
-                    <a class="collapse-item" href="<?= base_url(); ?>/rs">Daftar RS/Klinik</a>
+                    <a class="collapse-item" href="<?= base_url(); ?>/rumahsakit">Daftar RS/Klinik</a>
                 </div>
             </div>
         </li>

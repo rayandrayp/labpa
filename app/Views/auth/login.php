@@ -1,22 +1,4 @@
 <?= $this->include('layout/header'); ?>
-<?php
-$username = [
-    'name' => 'username',
-    'id' => 'username',
-    'value' => null,
-    'class' => 'form-control'
-];
-
-$password = [
-    'name' => 'password',
-    'id' => 'password',
-    'class' => 'form-control'
-];
-
-$session = session();
-$errors = $session->getFlashdata('errors');
-
-?>
 
 <body class="bg-gradient-primary">
 
@@ -34,19 +16,6 @@ $errors = $session->getFlashdata('errors');
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
-                                    <?php if ($errors != null) : ?>
-                                        <div class="alert alert-danger" role="alert">
-                                            <h4 class="alert-heading">Terjadi Kesalahan</h4>
-                                            <hr>
-                                            <p class="mb-0">
-                                                <?php
-                                                foreach ($errors as $err) {
-                                                    echo $err . '<br>';
-                                                }
-                                                ?>
-                                            </p>
-                                        </div>
-                                    <?php endif ?>
                                     <br>
                                     <br>
                                     <br>
@@ -55,29 +24,23 @@ $errors = $session->getFlashdata('errors');
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <?php if (session()->getFlashdata('msg')) : ?>
+                                        <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
+                                    <?php endif; ?>
+                                    <form class="user" action="/login/auth" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Enter Username...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
                                     </form>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
                                 </div>
                             </div>
                         </div>

@@ -12,12 +12,12 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Add Referensi RS/ Klinik</h1>
             </div>
-            <form class="user" action="/rumahsakit/save" method="post">
+            <form class="user" action="/rumahsakit/update/<?= $data['id']; ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class=" form-group row">
                     <label for="formhasil" class="col-sm-4 col-form-label">Nama RS/ Klinik</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" value="<?= old('nama'); ?>">
+                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('nama')) ? 'is-invalid' : ''; ?>" id="nama" name="nama" value="<?= (old('nama')) ? old('nama') : $data['nama'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('nama'); ?>
                         </div>
@@ -26,7 +26,7 @@
                 <div class="form-group row">
                     <label for="formhasil" class="col-sm-4 col-form-label">Kota</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-user  <?= ($validation->hasError('kota')) ? 'is-invalid' : ''; ?>" id="kota" name="kota" value="<?= old('kota'); ?>">
+                        <input type="text" class="form-control form-control-user  <?= ($validation->hasError('kota')) ? 'is-invalid' : ''; ?>" id="kota" name="kota" value="<?= (old('kota')) ? old('kota') : $data['kota'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('kota'); ?>
                         </div>

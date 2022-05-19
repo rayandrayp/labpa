@@ -33,17 +33,17 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Pages::index');
 $routes->get('/userlab', 'Pages::userlab');
-$routes->get('/login', 'Pages::login');
-$routes->get('/register', 'Pages::register');
+$routes->get('/login', 'Login::index');
 $routes->get('/hasil', 'Pages::hasil');
-$routes->get('/settings', 'Pages::settings');
 $routes->get('/edithasil', 'Pages::edithasil');
 $routes->get('/user/manage', 'User::index');
 $routes->get('/user/add', 'User::adduser');
 $routes->get('/user/edit', 'User::edituser');
-$routes->get('/rs', 'RumahSakit::index');
-$routes->get('/rs/add', 'RumahSakit::addrs');
-$routes->get('/rs/edit', 'RumahSakit::editrs');
+$routes->get('/rumahsakit', 'RumahSakit::index');
+$routes->get('/rumahsakit/add', 'RumahSakit::add');
+// $routes->get('/rumahsakit/edit', 'RumahSakit::editrs');
+
+$routes->delete('/rumahsakit/(:num)', 'RumahSakit::delete/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

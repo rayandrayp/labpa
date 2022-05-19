@@ -165,21 +165,6 @@ class Pages extends BaseController
         return view('pages/hasil', $data);
     }
 
-    public function login()
-    {
-        return view('pages/login');
-    }
-
-    public function register()
-    {
-        return view('pages/register');
-    }
-
-    public function settings()
-    {
-        return view('pages/settings');
-    }
-
     public function edithasil()
     {
         $data = [

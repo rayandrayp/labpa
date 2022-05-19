@@ -12,13 +12,19 @@
     </div> -->
     <div class="card-body">
 
-        <a href="/rs/add" data-toggle="tooltip" title="Add User" class="btn btn-success btn-icon-split">
+        <a href="/rumahsakit/add" data-toggle="tooltip" title="Add User" class="btn btn-success btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
             <span class="text">Add RS</span>
         </a>
         <br>
+        <?php if (session()->getFlashdata('message')) : ?>
+            <br>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('message'); ?>
+            </div>
+        <?php endif; ?>
         <br>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -26,7 +32,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Nama</th>
-                        <th>Status</th>
+                        <th>Kota Asal</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -34,29 +40,29 @@
                     <tr>
                         <th>ID</th>
                         <th>Nama</th>
-                        <th>Status</th>
+                        <th>Kota Asal</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
+                    <?php $i = 1; ?>
                     <?php foreach ($data as $a) : ?>
                         <tr>
-                            <td><?= $a['id_rs']; ?></td>
+                            <td><?= $i; ?></td>
                             <td><?= $a['nama']; ?></td>
-                            <td><?php if ($a['status'] == '1') {
-                                    echo 'Aktif';
-                                } else {
-                                    echo 'Tidak Aktif';
-                                } ?></td>
+                            <td><?= $a['kota']; ?></td>
                             <td>
-                                <a href="/rs/delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <a href="/rs/edit" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                                <form action="/rumahsakit/<?= $a['id']; ?>" method="post">
+                                    <?= csrf_field(); ?>
+                                    <a href="/rumahsakit/edit/<?= $a['id']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Apakah anda yakin?');"><i class="fas fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
