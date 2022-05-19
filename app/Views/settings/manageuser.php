@@ -19,6 +19,12 @@
             <span class="text">Add User</span>
         </a>
         <br>
+        <?php if (session()->getFlashdata('message')) : ?>
+            <br>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('message'); ?>
+            </div>
+        <?php endif; ?>
         <br>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -43,22 +49,26 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php foreach ($data_hasil as $a) : ?>
+                    <?php $i = 1; ?>
+                    <?php foreach ($data as $a) : ?>
                         <tr>
-                            <td><?= $a['id']; ?></td>
-                            <td><?= $a['username']; ?></td>
-                            <td><?= $a['nama']; ?></td>
-                            <td><?= $a['asal']; ?></td>
-                            <td><?= $a['kota']; ?></td>
+                            <td><?= $i; ?></td>
+                            <td><?= $a->username; ?></td>
+                            <td><?= $a->fullname; ?></td>
+                            <td><?= $a->nama; ?></td>
+                            <td><?= $a->kota; ?></td>
                             <td>
-                                <a href="/user/delete" data-toggle="tooltip" title="Delete" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                                <a href="/user/edit" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
-                                    <i class="fas fa-edit"></i>
-                                </a>
+                                <form action="/user/<?= $a->id; ?>" method="post">
+                                    <?= csrf_field(); ?>
+                                    <a href="/user/edit/<?= $a->id; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Apakah anda yakin?');"><i class="fas fa-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
+                        <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>

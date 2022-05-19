@@ -31,21 +31,19 @@ class RumahSakit extends BaseController
             'user_name' => 'Admin Utama',
             'title' => 'Tambah RS/Klinik',
             'desc' => '',
-            'validation' => \Config\Services::validation(),
-            'type' => 'add'
+            'validation' => \Config\Services::validation()
         ];
         return view('settings/addrs', $data);
     }
 
-    public function edit($slug)
+    public function edit($id)
     {
         $data = [
             'user_name' => 'Admin Utama',
             'title' => 'Edit User Lab PA',
             'desc' => 'Edit User Lab PA',
             'validation' => \Config\Services::validation(),
-            'type' => 'edit',
-            'data' => $this->rumahsakitModel->getData($slug)
+            'data' => $this->rumahsakitModel->getData($id)
         ];
         return view('settings/editrs', $data);
     }
@@ -74,8 +72,7 @@ class RumahSakit extends BaseController
 
         $this->rumahsakitModel->save([
             'nama' => $this->request->getVar('nama'),
-            'kota' => $this->request->getVar('kota'),
-            'status' => '1'
+            'kota' => $this->request->getVar('kota')
         ]);
 
         session()->setFlashdata('message', 'Data berhasil disimpan.');
@@ -114,8 +111,7 @@ class RumahSakit extends BaseController
         $this->rumahsakitModel->save([
             'id' => $id,
             'nama' => $this->request->getVar('nama'),
-            'kota' => $this->request->getVar('kota'),
-            'status' => '1'
+            'kota' => $this->request->getVar('kota')
         ]);
 
         session()->setFlashdata('message', 'Data berhasil diubah.');

@@ -36,13 +36,14 @@ $routes->get('/userlab', 'Pages::userlab');
 $routes->get('/login', 'Login::index');
 $routes->get('/hasil', 'Pages::hasil');
 $routes->get('/edithasil', 'Pages::edithasil');
-$routes->get('/user/manage', 'User::index');
+$routes->get('/user', 'User::index');
 $routes->get('/user/add', 'User::adduser');
-$routes->get('/user/edit', 'User::edituser');
+// $routes->get('/user/edit', 'User::edituser');
 $routes->get('/rumahsakit', 'RumahSakit::index');
 $routes->get('/rumahsakit/add', 'RumahSakit::add');
 // $routes->get('/rumahsakit/edit', 'RumahSakit::editrs');
 
+$routes->delete('/user/(:num)', 'User::delete/$1');
 $routes->delete('/rumahsakit/(:num)', 'RumahSakit::delete/$1');
 /*
  * --------------------------------------------------------------------

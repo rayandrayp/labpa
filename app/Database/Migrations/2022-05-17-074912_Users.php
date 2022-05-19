@@ -19,21 +19,17 @@ class Users extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'username' => [
-                'type' => 'VARCHAR',
+            'username'  => [
+                'type'  => 'VARCHAR',
                 'constraint' => '255',
             ],
             'password' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
-            'rs_asal' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
-            ],
-            'status' => [
-                'type' => 'VARCHAR',
-                'constraint' => '1',
+            'id_rs' => [
+                'type'       => 'INT',
+                'constraint' => 5,
             ],
             'created_at' => [
                 'type' => 'DATETIME',

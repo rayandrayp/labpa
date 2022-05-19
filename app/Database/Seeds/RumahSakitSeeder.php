@@ -13,56 +13,48 @@ class RumahSakitSeeder extends Seeder
             [
                 'nama'          => 'RSI gondanglegi',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ],
             [
                 'nama'          => 'RS Bala Keselamatan Bokor',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ],
             [
                 'nama'          => 'Rumkitban Lawang',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ],
             [
                 'nama'          => 'RS Prasetya Husada',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ],
             [
                 'nama'          => 'RS Karsa Husada',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ],
             [
                 'nama'          => 'RS Wajak Husada',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ],
             [
                 'nama'          => 'RS Lawang Medika',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ],
             [
                 'nama'          => 'Lab Patimura',
                 'kota'          => 'Kabupaten Malang',
-                'status'        => '1',
                 'created_at'    => TIME::now(),
                 'updated_at'    => TIME::now()
             ]

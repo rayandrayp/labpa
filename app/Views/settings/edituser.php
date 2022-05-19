@@ -12,12 +12,12 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Add User Laboratorium PA</h1>
             </div>
-            <form class="user" action="/user/save" method="post">
+            <form class="user" action="/user/update/<?= $data['id']; ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="formhasil" class="col-sm-4 col-form-label">Username</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username">
+                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" value="<?= (old('username')) ? old('username') : $data['username'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('username'); ?>
                         </div>
@@ -26,7 +26,7 @@
                 <div class="form-group row">
                     <label for="formhasil" class="col-sm-4 col-form-label">Nama Lengkap</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('fullname')) ? 'is-invalid' : ''; ?>" id="fullname" name="fullname">
+                        <input type="text" class="form-control form-control-user <?= ($validation->hasError('fullname')) ? 'is-invalid' : ''; ?>" id="fullname" name="fullname" value="<?= (old('fullname')) ? old('fullname') : $data['fullname'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('fullname'); ?>
                         </div>
@@ -43,9 +43,13 @@
                 </div>
                 <div class=" form-group row">
                     <label for="formhasil" class="col-sm-4 col-form-label">RS/Klinik Asal</label>
-                    <select class="form-select form-control-user col-sm-8 <?= ($validation->hasError('id_rs')) ? 'is-invalid' : ''; ?>" aria-label="Default select example" id="id_rs" name="id_rs">
+                    <select class="form-select form-control-user col-sm-8" aria-label="Default select example" id="id_rs" name="id_rs">
                         <?php foreach ($datars as $rs) : ?>
-                            <option value="<?= $rs['id']; ?>"><?= $rs['nama']; ?></option>
+                            <?php if ($rs['id'] == $data['id_rs']) { ?>
+                                <option value="<?= $rs['id']; ?>" selected><?= $rs['nama']; ?></option>
+                            <?php } else { ?>
+                                <option value="<?= $rs['id']; ?>"><?= $rs['nama']; ?></option>
+                            <?php } ?>
                         <?php endforeach; ?>
                     </select>
                     <div class="invalid-feedback">

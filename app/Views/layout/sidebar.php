@@ -50,7 +50,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">User:</h6>
                     <a class="collapse-item" href="<?= base_url(); ?>/user/add">Add</a>
-                    <a class="collapse-item" href="<?= base_url(); ?>/user/manage">Manage</a>
+                    <a class="collapse-item" href="<?= base_url(); ?>/user">Manage</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Others:</h6>
                     <a class="collapse-item" href="<?= base_url(); ?>/rumahsakit">Daftar RS/Klinik</a>
