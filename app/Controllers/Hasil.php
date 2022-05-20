@@ -127,7 +127,7 @@ class Hasil extends BaseController
 
 
         if (!$this->validate($rules)) {
-            return redirect()->to('/hasil/edit')->withInput();
+            return redirect()->to('/hasil/add')->withInput();
         }
 
         //ambil file
@@ -145,7 +145,8 @@ class Hasil extends BaseController
             'namapasien' => $this->request->getVar('namapasien'),
             'nomorlab' => $this->request->getVar('nomorlab'),
             'id_rs' => $this->request->getVar('id_rs'),
-            'namafile' => $namaFile
+            'namafile' => $namaFile,
+            'status' => '1'
         ]);
 
         session()->setFlashdata('message', 'Data berhasil disimpan.');
@@ -225,7 +226,8 @@ class Hasil extends BaseController
             'namapasien' => $this->request->getVar('namapasien'),
             'nomorlab' => $this->request->getVar('nomorlab'),
             'id_rs' => $this->request->getVar('id_rs'),
-            'namafile' => $namaFile
+            'namafile' => $namaFile,
+            'status' => '1'
         ]);
 
         session()->setFlashdata('message', 'Data berhasil disimpan.');
@@ -235,18 +237,18 @@ class Hasil extends BaseController
 
     public function delete($id)
     {
-        //cari nama file berdasarkan ID
-        $hasil = $this->hasilModel->getData($id);
+        //hard delete: delete data
+        // $hasil = $this->hasilModel->getData($id);//cari nama file berdasarkan ID 
+        // $this->hasilModel->delete($id);
+        // unlink('upload/' . $hasil['namafile']); //hapus file
+        //end of hard delete
 
-        //hapus file
-        unlink('upload/' . $hasil['namafile']);
-
-        $this->userModel->delete($id);
-        // $this->rumahsakitModel->save([
-        //     'id' => $id,
-        //     'status' => '0'
-        // ]);
+        $this->hasilModel->save([
+            'id' => $id,
+            'status' => '0',
+            'deleted_at' => date("Y-m-d H:i:s")
+        ]);
         session()->setFlashdata('message', 'Data berhasil dihapus.');
-        return redirect()->to('/user');
+        return redirect()->to('/hasil');
     }
 }

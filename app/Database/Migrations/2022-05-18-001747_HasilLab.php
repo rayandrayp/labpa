@@ -31,11 +31,19 @@ class HasilLab extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'status' => [
+                'type' => 'VARCHAR',
+                'constraint' => '1',
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
             'updated_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
+            'deleted_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ]

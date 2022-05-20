@@ -21,6 +21,7 @@
                         <th>Asal RS/Klinik</th>
                         <th>Kota</th>
                         <th>Tanggal Upload</th>
+                        <th>Status</th>
                         <th>Hasil</th>
                     </tr>
                 </thead>
@@ -32,6 +33,7 @@
                         <th>Asal RS/Klinik</th>
                         <th>Kota</th>
                         <th>Tanggal Upload</th>
+                        <th>Status</th>
                         <th>Hasil</th>
                     </tr>
                 </tfoot>
@@ -45,6 +47,7 @@
                             <td><?= $a->nama; ?></td>
                             <td><?= $a->kota; ?></td>
                             <td><?= $a->created_at; ?></td>
+                            <td><?= ($a->status == '1') ? 'Aktif' : 'Tidak Aktif'; ?></td>
                             <td>
                                 <?php if ($user_name == 'Admin Utama') { ?>
                                     <form action="/hasil/<?= $a->id; ?>" method="post">
