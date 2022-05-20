@@ -31,18 +31,21 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Pages::index');
-$routes->get('/userlab', 'Pages::userlab');
+
+// $routes->get('/userlab', 'Pages::userlab');
 $routes->get('/login', 'Login::index');
-$routes->get('/hasil', 'Pages::hasil');
-$routes->get('/edithasil', 'Pages::edithasil');
+$routes->get('/', 'Hasil::index');
+$routes->get('/hasil', 'Hasil::index');
+$routes->get('/hasil/add', 'Hasil::add');
+// $routes->get('/edithasil', 'Pages::edithasil');
 $routes->get('/user', 'User::index');
-$routes->get('/user/add', 'User::adduser');
+$routes->get('/user/add', 'User::add');
 // $routes->get('/user/edit', 'User::edituser');
 $routes->get('/rumahsakit', 'RumahSakit::index');
 $routes->get('/rumahsakit/add', 'RumahSakit::add');
 // $routes->get('/rumahsakit/edit', 'RumahSakit::editrs');
 
+$routes->delete('/hasil/(:num)', 'Hasil::delete/$1');
 $routes->delete('/user/(:num)', 'User::delete/$1');
 $routes->delete('/rumahsakit/(:num)', 'RumahSakit::delete/$1');
 /*

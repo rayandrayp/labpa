@@ -27,7 +27,7 @@
             Hasil Lab PA
         </div>
         <li class="nav-item">
-            <a class="nav-link" href="<?= base_url(); ?>/hasil">
+            <a class="nav-link" href="<?= base_url(); ?>/hasil/add">
                 <i class="fas fa-fw fa-pencil-alt"></i>
                 <span>Input Hasil Lab PA</span>
             </a>

@@ -16,6 +16,7 @@ class User extends BaseController
         $this->rumahsakitModel = new RumahSakitModel();
         $this->userModel = new UserModel();
     }
+
     public function index()
     {
         $dataUserRS =  $this->userModel->getDataUserRS()->getResult();
@@ -30,7 +31,7 @@ class User extends BaseController
         return view('settings/manageuser', $data);
     }
 
-    public function adduser()
+    public function add()
     {
         $dataRS = $this->rumahsakitModel->findAll();
         $data = [
