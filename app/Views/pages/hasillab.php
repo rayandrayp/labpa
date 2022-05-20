@@ -21,7 +21,9 @@
                         <th>Asal RS/Klinik</th>
                         <th>Kota</th>
                         <th>Tanggal Upload</th>
-                        <th>Status</th>
+                        <?php if ($_SESSION['user_fullname'] == 'Admin Utama') { ?>
+                            <th>Status</th>
+                        <?php } ?>
                         <th>Hasil</th>
                     </tr>
                 </thead>
@@ -33,7 +35,9 @@
                         <th>Asal RS/Klinik</th>
                         <th>Kota</th>
                         <th>Tanggal Upload</th>
-                        <th>Status</th>
+                        <?php if ($_SESSION['user_fullname'] == 'Admin Utama') { ?>
+                            <th>Status</th>
+                        <?php } ?>
                         <th>Hasil</th>
                     </tr>
                 </tfoot>
@@ -47,9 +51,11 @@
                             <td><?= $a->nama; ?></td>
                             <td><?= $a->kota; ?></td>
                             <td><?= $a->created_at; ?></td>
-                            <td><?= ($a->status == '1') ? 'Aktif' : 'Tidak Aktif'; ?></td>
+                            <?php if ($_SESSION['user_fullname'] == 'Admin Utama') { ?>
+                                <td><?= ($a->status == '1') ? 'Aktif' : 'Tidak Aktif'; ?></td>
+                            <?php } ?>
                             <td>
-                                <?php if ($user_name == 'Admin Utama') { ?>
+                                <?php if ($_SESSION['user_fullname'] == 'Admin Utama') { ?>
                                     <form action="/hasil/<?= $a->id; ?>" method="post">
                                         <?= csrf_field(); ?>
                                         <a target="_blank" href="upload/<?= $a->namafile; ?>" data-toggle="tooltip" title="Cetak" class="btn btn-primary btn-circle btn-sm">

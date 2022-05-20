@@ -34,15 +34,18 @@ $routes->setAutoRoute(true);
 
 // $routes->get('/userlab', 'Pages::userlab');
 $routes->get('/login', 'Login::index');
-$routes->get('/', 'Hasil::index');
-$routes->get('/hasil', 'Hasil::index');
-$routes->get('/hasil/add', 'Hasil::add');
-// $routes->get('/edithasil', 'Pages::edithasil');
-$routes->get('/user', 'User::index');
-$routes->get('/user/add', 'User::add');
+$routes->get('/logout', 'Login::logout');
+
+$routes->get('/', 'Hasil::index', ['filter' => 'auth']);
+$routes->get('/hasil', 'Hasil::index', ['filter' => 'auth']);
+$routes->get('/hasil/add', 'Hasil::add', ['filter' => 'auth']);
+
+$routes->get('/user', 'User::index', ['filter' => 'auth']);
+$routes->get('/user/add', 'User::add', ['filter' => 'auth']);
 // $routes->get('/user/edit', 'User::edituser');
-$routes->get('/rumahsakit', 'RumahSakit::index');
-$routes->get('/rumahsakit/add', 'RumahSakit::add');
+
+$routes->get('/rumahsakit', 'RumahSakit::index', ['filter' => 'auth']);
+$routes->get('/rumahsakit/add', 'RumahSakit::add', ['filter' => 'auth']);
 // $routes->get('/rumahsakit/edit', 'RumahSakit::editrs');
 
 $routes->delete('/hasil/(:num)', 'Hasil::delete/$1');

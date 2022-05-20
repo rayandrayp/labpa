@@ -21,7 +21,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <?php if ($user_name == 'Admin Utama') { ?>
+    <?php if ($_SESSION['user_fullname'] == 'Admin Utama') { ?>
         <!-- Heading -->
         <div class="sidebar-heading">
             Hasil Lab PA

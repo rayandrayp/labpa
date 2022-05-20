@@ -9,7 +9,7 @@ class Login extends BaseController
     public function index()
     {
         helper(['form']);
-        echo view('pages/login');
+        echo view('auth/login');
     }
 
     public function auth()
@@ -18,15 +18,15 @@ class Login extends BaseController
         $model = new UserModel();
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
-        $data = $model->where('username', $username)->where('status', '1')->first();
+        $data = $model->where('username', $username)->first();
         if ($data) {
             $pass = $data['password'];
             $verify_pass = password_verify($password, $pass);
             if ($verify_pass) {
                 $ses_data = [
                     'user_id'       => $data['id'],
-                    'user_name'     => $data['username'],
-                    'user_rs_asal'    => $data['rs_asal'],
+                    'user_fullname' => $data['fullname'],
+                    'user_id_rs'    => $data['id_rs'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);

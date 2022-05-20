@@ -17,13 +17,15 @@ class Hasil extends BaseController
     }
     public function index()
     {
-        $dataHasil =  $this->hasilModel->getDataHasilLabRS()->getResult();
+        $user_fullname = $_SESSION['user_fullname'];
+        $dataHasil =  $this->hasilModel->getDataHasilLabRS($user_fullname)->getResult();
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
         $data = [
-            'user_name' => 'Admin Utama',
             'title' => 'Dashboard',
             'desc' => 'Tabel Hasil Pemeriksaan Lab PA',
             'validation' => \Config\Services::validation(),
-            'data' => $dataHasil
+            'data' => $dataHasil,
+            'rumahsakit' => $nama_rs
         ];
         // dd($data);
         return view('pages/hasillab', $data);

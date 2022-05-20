@@ -21,7 +21,6 @@ class User extends BaseController
     {
         $dataUserRS =  $this->userModel->getDataUserRS()->getResult();
         $data = [
-            'user_name' => 'Admin Utama',
             'title' => 'Manage User',
             'desc' => 'Tabel berisi daftar User',
             'validation' => \Config\Services::validation(),
@@ -35,7 +34,6 @@ class User extends BaseController
     {
         $dataRS = $this->rumahsakitModel->findAll();
         $data = [
-            'user_name' => 'Admin Utama',
             'title' => 'Add User',
             'desc' => 'Tabel berisi daftar User',
             'validation' => \Config\Services::validation(),
@@ -48,7 +46,6 @@ class User extends BaseController
     {
         $dataRS = $this->rumahsakitModel->findAll();
         $data = [
-            'user_name' => 'Admin Utama',
             'title' => 'Edit User Lab PA',
             'desc' => 'Edit User Lab PA',
             'validation' => \Config\Services::validation(),

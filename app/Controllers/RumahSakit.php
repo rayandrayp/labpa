@@ -17,7 +17,6 @@ class RumahSakit extends BaseController
     {
         $datars = $this->rumahsakitModel->findAll();
         $data = [
-            'user_name' => 'Admin Utama',
             'title' => 'Manage RS/ Klinik',
             'desc' => 'Tabel',
             'data' => $datars
@@ -28,7 +27,6 @@ class RumahSakit extends BaseController
     public function add()
     {
         $data = [
-            'user_name' => 'Admin Utama',
             'title' => 'Tambah RS/Klinik',
             'desc' => '',
             'validation' => \Config\Services::validation()
@@ -39,7 +37,6 @@ class RumahSakit extends BaseController
     public function edit($id)
     {
         $data = [
-            'user_name' => 'Admin Utama',
             'title' => 'Edit User Lab PA',
             'desc' => 'Edit User Lab PA',
             'validation' => \Config\Services::validation(),
