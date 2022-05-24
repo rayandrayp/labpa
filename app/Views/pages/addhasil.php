@@ -12,7 +12,7 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">HASIL PEMERIKSAAN PATOLOGI</h1>
             </div>
-            <form class=" user" action="/hasil/save" method="post" enctype="multipart/form-data">
+            <form class=" user" action="<?= base_url(); ?>/hasil/save" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="formhasil" class="col-sm-4 col-form-label">Nama Pasien</label>
