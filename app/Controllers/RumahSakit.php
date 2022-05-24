@@ -16,31 +16,43 @@ class RumahSakit extends BaseController
     public function index()
     {
         $datars = $this->rumahsakitModel->findAll();
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
+
         $data = [
             'title' => 'Manage RS/ Klinik',
             'desc' => 'Tabel',
-            'data' => $datars
+            'data' => $datars,
+            'rumahsakit' => $nama_rs
         ];
         return view('settings/managers', $data);
     }
 
     public function add()
     {
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
+
         $data = [
             'title' => 'Tambah RS/Klinik',
             'desc' => '',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'rumahsakit' => $nama_rs
         ];
         return view('settings/addrs', $data);
     }
 
     public function edit($id)
     {
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
+
         $data = [
             'title' => 'Edit User Lab PA',
             'desc' => 'Edit User Lab PA',
             'validation' => \Config\Services::validation(),
-            'data' => $this->rumahsakitModel->getData($id)
+            'data' => $this->rumahsakitModel->getData($id),
+            'rumahsakit' => $nama_rs
         ];
         return view('settings/editrs', $data);
     }

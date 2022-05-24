@@ -12,7 +12,7 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">HASIL PEMERIKSAAN PATOLOGI</h1>
             </div>
-            <form class=" user" action="/hasil/update/<?= $data['id']; ?>" method="post" enctype="multipart/form-data">
+            <form class=" user" action="<?= base_url(); ?>/hasil/update/<?= $data['id']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="namalama" value="<?= $data['namafile']; ?>">
                 <?php $validation->getError(); ?>

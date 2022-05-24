@@ -12,7 +12,7 @@
             <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Add User Laboratorium PA</h1>
             </div>
-            <form class="user" action="/user/update/<?= $data['id']; ?>" method="post">
+            <form class="user" action="<?= base_url(); ?>/user/update/<?= $data['id']; ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
                     <label for="formhasil" class="col-sm-4 col-form-label">Username</label>

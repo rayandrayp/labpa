@@ -27,7 +27,7 @@
                                     <?php if (session()->getFlashdata('msg')) : ?>
                                         <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
                                     <?php endif; ?>
-                                    <form class="user" action="/login/auth" method="post">
+                                    <form class="user" action="<?= base_url(); ?>/login/auth" method="post">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Enter Username...">
                                         </div>

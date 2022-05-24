@@ -74,12 +74,15 @@ class Hasil extends BaseController
     public function add()
     {
         $dataRS = $this->rumahsakitModel->findAll();
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
         $data = [
             'user_name' => 'Admin Utama',
             'title' => 'Input Hasil Lab PA',
             'desc' => 'Input Hasil Pemeriksaan Lab PA',
             'validation' => \Config\Services::validation(),
-            'datars' => $dataRS
+            'datars' => $dataRS,
+            'rumahsakit' => $nama_rs
         ];
         return view('pages/addhasil', $data);
     }
@@ -88,13 +91,16 @@ class Hasil extends BaseController
     {
         $dataHasil =  $this->hasilModel->getData($id);
         $dataRS = $this->rumahsakitModel->findAll();
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
         $data = [
             'user_name' => 'Admin Utama',
             'title' => 'Edit Hasil Lab PA',
             'desc' => 'Edit Hasil Pemeriksaan Lab PA',
             'validation' => \Config\Services::validation(),
             'data' => $dataHasil,
-            'datars' => $dataRS
+            'datars' => $dataRS,
+            'rumahsakit' => $nama_rs
         ];
         // dd($data);
         return view('pages/edithasil', $data);

@@ -56,12 +56,12 @@
                             <?php } ?>
                             <td>
                                 <?php if ($_SESSION['user_fullname'] == 'Admin Utama') { ?>
-                                    <form action="/hasil/<?= $a->id; ?>" method="post">
+                                    <form action="<?= base_url(); ?>/hasil/<?= $a->id; ?>" method="post">
                                         <?= csrf_field(); ?>
                                         <a target="_blank" href="upload/<?= $a->namafile; ?>" data-toggle="tooltip" title="Cetak" class="btn btn-primary btn-circle btn-sm">
                                             <i class="fas fa-print"></i>
                                         </a>
-                                        <a href="/hasil/edit/<?= $a->id; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                        <a href="<?= base_url(); ?>/hasil/edit/<?= $a->id; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <input type="hidden" name="_method" value="DELETE">

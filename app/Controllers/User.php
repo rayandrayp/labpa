@@ -20,11 +20,15 @@ class User extends BaseController
     public function index()
     {
         $dataUserRS =  $this->userModel->getDataUserRS()->getResult();
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
+
         $data = [
             'title' => 'Manage User',
             'desc' => 'Tabel berisi daftar User',
             'validation' => \Config\Services::validation(),
-            'data' => $dataUserRS
+            'data' => $dataUserRS,
+            'rumahsakit' => $nama_rs
         ];
         // dd($dataUserRS);
         return view('settings/manageuser', $data);
@@ -33,11 +37,15 @@ class User extends BaseController
     public function add()
     {
         $dataRS = $this->rumahsakitModel->findAll();
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
+
         $data = [
             'title' => 'Add User',
             'desc' => 'Tabel berisi daftar User',
             'validation' => \Config\Services::validation(),
-            'datars' => $dataRS
+            'datars' => $dataRS,
+            'rumahsakit' => $nama_rs
         ];
         return view('settings/adduser', $data);
     }
@@ -45,12 +53,16 @@ class User extends BaseController
     public function edit($id)
     {
         $dataRS = $this->rumahsakitModel->findAll();
+        $user_fullname = $_SESSION['user_fullname'];
+        ($user_fullname == 'Admin Utama') ? $nama_rs = 'Super Admin' : $nama_rs = $this->rumahsakitModel->getData($_SESSION['user_id_rs'])['nama'];
+
         $data = [
             'title' => 'Edit User Lab PA',
             'desc' => 'Edit User Lab PA',
             'validation' => \Config\Services::validation(),
             'data' => $this->userModel->getData($id),
-            'datars' => $dataRS
+            'datars' => $dataRS,
+            'rumahsakit' => $nama_rs
         ];
         return view('settings/edituser', $data);
     }

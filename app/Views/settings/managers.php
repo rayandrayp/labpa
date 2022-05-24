@@ -12,7 +12,7 @@
     </div> -->
     <div class="card-body">
 
-        <a href="/rumahsakit/add" data-toggle="tooltip" title="Add User" class="btn btn-success btn-icon-split">
+        <a href="<?= base_url(); ?>/rumahsakit/add" data-toggle="tooltip" title="Add User" class="btn btn-success btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
@@ -52,9 +52,9 @@
                             <td><?= $a['nama']; ?></td>
                             <td><?= $a['kota']; ?></td>
                             <td>
-                                <form action="/rumahsakit/<?= $a['id']; ?>" method="post">
+                                <form action="<?= base_url(); ?>/rumahsakit/<?= $a['id']; ?>" method="post">
                                     <?= csrf_field(); ?>
-                                    <a href="/rumahsakit/edit/<?= $a['id']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                    <a href="<?= base_url(); ?>/rumahsakit/edit/<?= $a['id']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <input type="hidden" name="_method" value="DELETE">
