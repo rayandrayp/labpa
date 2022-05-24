@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 
-class Login extends BaseController
+class Auth extends BaseController
 {
     public function index()
     {
@@ -12,7 +12,7 @@ class Login extends BaseController
         echo view('auth/login');
     }
 
-    public function auth()
+    public function login()
     {
         $session = session();
         $model = new UserModel();
@@ -33,11 +33,11 @@ class Login extends BaseController
                 return redirect()->to('/');
             } else {
                 $session->setFlashdata('msg', 'Wrong Password');
-                return redirect()->to('/login');
+                return redirect()->to('/auth');
             }
         } else {
             $session->setFlashdata('msg', 'User not Found or not Active');
-            return redirect()->to('/login');
+            return redirect()->to('/auth');
         }
     }
 
@@ -45,6 +45,6 @@ class Login extends BaseController
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/auth');
     }
 }

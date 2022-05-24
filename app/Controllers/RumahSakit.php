@@ -16,33 +16,57 @@ class RumahSakit extends BaseController
     public function index()
     {
         $datars = $this->rumahsakitModel->findAll();
-        $data = [
-            'title' => 'Manage RS/ Klinik',
-            'desc' => 'Tabel',
-            'data' => $datars
-        ];
-        return view('settings/managers', $data);
+        $user_fullname = $_SESSION['user_fullname'];
+        if ($user_fullname == 'Admin Utama') {
+            $nama_rs = 'Super Admin';
+
+            $data = [
+                'title' => 'Manage RS/ Klinik',
+                'desc' => 'Tabel',
+                'data' => $datars,
+                'rumahsakit' => $nama_rs
+            ];
+            return view('settings/managers', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function add()
     {
-        $data = [
-            'title' => 'Tambah RS/Klinik',
-            'desc' => '',
-            'validation' => \Config\Services::validation()
-        ];
-        return view('settings/addrs', $data);
+        $user_fullname = $_SESSION['user_fullname'];
+        if ($user_fullname == 'Admin Utama') {
+            $nama_rs = 'Super Admin';
+
+            $data = [
+                'title' => 'Tambah RS/Klinik',
+                'desc' => '',
+                'validation' => \Config\Services::validation(),
+                'rumahsakit' => $nama_rs
+            ];
+            return view('settings/addrs', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function edit($id)
     {
-        $data = [
-            'title' => 'Edit User Lab PA',
-            'desc' => 'Edit User Lab PA',
-            'validation' => \Config\Services::validation(),
-            'data' => $this->rumahsakitModel->getData($id)
-        ];
-        return view('settings/editrs', $data);
+        $user_fullname = $_SESSION['user_fullname'];
+        if ($user_fullname == 'Admin Utama') {
+            $nama_rs = 'Super Admin';
+
+            $data = [
+                'title' => 'Edit User Lab PA',
+                'desc' => 'Edit User Lab PA',
+                'validation' => \Config\Services::validation(),
+                'data' => $this->rumahsakitModel->getData($id),
+                'rumahsakit' => $nama_rs
+            ];
+            return view('settings/editrs', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function save()

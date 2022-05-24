@@ -33,8 +33,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 // $routes->get('/userlab', 'Pages::userlab');
-$routes->get('/login', 'Login::index');
-$routes->get('/logout', 'Login::logout');
+$routes->get('/auth', 'Auth::index');
+// $routes->get('/auth/login', 'Auth::auth');
+// $routes->get('/auth/logout', 'Auth::logout');
 
 $routes->get('/', 'Hasil::index', ['filter' => 'auth']);
 $routes->get('/hasil', 'Hasil::index', ['filter' => 'auth']);

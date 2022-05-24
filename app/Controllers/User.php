@@ -20,39 +20,60 @@ class User extends BaseController
     public function index()
     {
         $dataUserRS =  $this->userModel->getDataUserRS()->getResult();
-        $data = [
-            'title' => 'Manage User',
-            'desc' => 'Tabel berisi daftar User',
-            'validation' => \Config\Services::validation(),
-            'data' => $dataUserRS
-        ];
-        // dd($dataUserRS);
-        return view('settings/manageuser', $data);
+        $user_fullname = $_SESSION['user_fullname'];
+        if ($user_fullname == 'Admin Utama') {
+            $nama_rs = 'Super Admin';
+            $data = [
+                'title' => 'Manage User',
+                'desc' => 'Tabel berisi daftar User',
+                'validation' => \Config\Services::validation(),
+                'data' => $dataUserRS,
+                'rumahsakit' => $nama_rs
+            ];
+            // dd($dataUserRS);
+            return view('settings/manageuser', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function add()
     {
         $dataRS = $this->rumahsakitModel->findAll();
-        $data = [
-            'title' => 'Add User',
-            'desc' => 'Tabel berisi daftar User',
-            'validation' => \Config\Services::validation(),
-            'datars' => $dataRS
-        ];
-        return view('settings/adduser', $data);
+        $user_fullname = $_SESSION['user_fullname'];
+        if ($user_fullname == 'Admin Utama') {
+            $nama_rs = 'Super Admin';
+            $data = [
+                'title' => 'Add User',
+                'desc' => 'Tabel berisi daftar User',
+                'validation' => \Config\Services::validation(),
+                'datars' => $dataRS,
+                'rumahsakit' => $nama_rs
+            ];
+            return view('settings/adduser', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function edit($id)
     {
         $dataRS = $this->rumahsakitModel->findAll();
-        $data = [
-            'title' => 'Edit User Lab PA',
-            'desc' => 'Edit User Lab PA',
-            'validation' => \Config\Services::validation(),
-            'data' => $this->userModel->getData($id),
-            'datars' => $dataRS
-        ];
-        return view('settings/edituser', $data);
+        $user_fullname = $_SESSION['user_fullname'];
+        if ($user_fullname == 'Admin Utama') {
+            $nama_rs = 'Super Admin';
+            $data = [
+                'title' => 'Edit User Lab PA',
+                'desc' => 'Edit User Lab PA',
+                'validation' => \Config\Services::validation(),
+                'data' => $this->userModel->getData($id),
+                'datars' => $dataRS,
+                'rumahsakit' => $nama_rs
+            ];
+            return view('settings/edituser', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function save()
