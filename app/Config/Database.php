@@ -57,9 +57,9 @@ class Database extends Config
      */
     public $development = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
+        'hostname' => '10.10.10.2',
+        'username' => 'itrst',
+        'password' => 'ITrst321',
         'database' => 'labpa',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
@@ -84,9 +84,9 @@ class Database extends Config
      */
     public $tests = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
+        'hostname' => '10.10.10.2',
+        'username' => 'itrst',
+        'password' => 'ITrst321',
         'database' => 'labpa',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
@@ -137,7 +137,7 @@ class Database extends Config
         'hostname' => '10.10.10.2',
         'username' => 'itrst',
         'password' => 'ITrst321',
-        'database' => 'sik',
+        'database' => 'labpa',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
