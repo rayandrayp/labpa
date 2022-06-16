@@ -20,9 +20,9 @@ class Auth extends BaseController
         $password = $this->request->getVar('password');
         $data = $model->where('username', $username)->first();
         if ($data) {
-            $pass = $data['password'];
-            $verify_pass = password_verify($password, $pass);
-            if ($verify_pass) {
+            $pass = $this->decrypt($data['password'], 'ITrstds123#');
+            // $verify_pass = password_verify($password, $pass);
+            if ($password == $pass) {
                 $ses_data = [
                     'user_id'       => $data['id'],
                     'user_fullname' => $data['fullname'],

@@ -31,36 +31,41 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Username</th>
                         <th>Nama Lengkap</th>
                         <th>RS/Klinik Asal</th>
                         <th>Kota</th>
+                        <th>Username</th>
+                        <th>Password</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Username</th>
                         <th>Nama Lengkap</th>
                         <th>RS/Klinik Asal</th>
                         <th>Kota</th>
+                        <th>Username</th>
+                        <th>Password</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($data as $a) : ?>
+                    <?php for ($i = 0; $i < count($data); $i++) { ?>
+                        <?php //foreach ($data as $a) : 
+                        ?>
                         <tr>
-                            <td><?= $i; ?></td>
-                            <td><?= $a->username; ?></td>
-                            <td><?= $a->fullname; ?></td>
-                            <td><?= $a->nama; ?></td>
-                            <td><?= $a->kota; ?></td>
+                            <td><?= $i + 1; ?></td>
+                            <td><?= $data[$i]->fullname; ?></td>
+                            <td><?= $data[$i]->nama; ?></td>
+                            <td><?= $data[$i]->kota; ?></td>
+                            <td><?= $data[$i]->username; ?></td>
+                            <td><?= $pwd[$i]; ?></td>
                             <td>
-                                <form action="<?= base_url(); ?>/user/<?= $a->id; ?>" method="post">
+                                <form action="<?= base_url(); ?>/user/<?= $data[$i]->id; ?>" method="post">
                                     <?= csrf_field(); ?>
-                                    <a href="<?= base_url(); ?>/user/edit/<?= $a->id; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
+                                    <a href="<?= base_url(); ?>/user/edit/<?= $data[$i]->id; ?>" data-toggle="tooltip" title="Edit" class="btn btn-success btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <input type="hidden" name="_method" value="DELETE">
@@ -68,8 +73,9 @@
                                 </form>
                             </td>
                         </tr>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
+                    <?php } ?>
+                    <?php //endforeach; 
+                    ?>
                 </tbody>
             </table>
         </div>

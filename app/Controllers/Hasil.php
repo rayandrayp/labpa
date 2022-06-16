@@ -214,16 +214,17 @@ class Hasil extends BaseController
     public function delete($id)
     {
         //hard delete: delete data
-        // $hasil = $this->hasilModel->getData($id);//cari nama file berdasarkan ID 
-        // $this->hasilModel->delete($id);
-        // unlink('upload/' . $hasil['namafile']); //hapus file
+        $hasil = $this->hasilModel->getData($id); //cari nama file berdasarkan ID 
+        $this->hasilModel->delete($id);
+        unlink('upload/' . $hasil['namafile']); //hapus file
         //end of hard delete
 
-        $this->hasilModel->save([
-            'id' => $id,
-            'status' => '0',
-            'deleted_at' => date("Y-m-d H:i:s")
-        ]);
+        //soft delete
+        // $this->hasilModel->save([
+        //     'id' => $id,
+        //     'status' => '0',
+        //     'deleted_at' => date("Y-m-d H:i:s")
+        // ]);
         session()->setFlashdata('message', 'Data berhasil dihapus.');
         return redirect()->to('/hasil');
     }

@@ -22,15 +22,21 @@ class User extends BaseController
         $dataUserRS =  $this->userModel->getDataUserRS()->getResult();
         $user_fullname = $_SESSION['user_fullname'];
         if ($user_fullname == 'Admin Utama') {
+            $dataPwd = array();
+            for ($i = 0; $i < count($dataUserRS); $i++) {
+                $dataPwd[$i] = $this->decrypt($dataUserRS[$i]->password, 'ITrstds123#');
+            }
             $nama_rs = 'Super Admin';
             $data = [
                 'title' => 'Manage User',
                 'desc' => 'Tabel berisi daftar User',
                 'validation' => \Config\Services::validation(),
                 'data' => $dataUserRS,
+                'pwd' => $dataPwd,
                 'rumahsakit' => $nama_rs
             ];
-            // dd($dataUserRS);
+
+            // dd($data);
             return view('settings/manageuser', $data);
         } else {
             return redirect()->to('/');
@@ -110,11 +116,12 @@ class User extends BaseController
         if (!$this->validate($rules)) {
             return redirect()->to('/user/add')->withInput();
         }
-
+        // $pass = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
+        $pass = $this->encrypt($this->request->getVar('password'), 'ITrstds123#');
         $this->userModel->save([
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
-            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            'password' => $pass,
             'id_rs' => $this->request->getVar('id_rs')
         ]);
 
@@ -163,12 +170,13 @@ class User extends BaseController
         if (!$this->validate($rules)) {
             return redirect()->to('/user/edit/' . $id)->withInput();
         }
-
+        // $pass = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
+        $pass = $this->encrypt($this->request->getVar('password'), 'ITrstds123#');
         $this->userModel->save([
             'id' => $id,
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
-            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            'password' => $pass,
             'id_rs' => $this->request->getVar('id_rs')
         ]);
 

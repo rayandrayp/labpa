@@ -27,6 +27,7 @@ class UserModel extends Model
             ->select('users.username')
             ->select('users.fullname')
             ->select('users.id_rs')
+            ->select('users.password')
             ->select('rumahsakit.nama')
             ->select('rumahsakit.kota')
             ->join('rumahsakit', 'users.id_rs = rumahsakit.id')
